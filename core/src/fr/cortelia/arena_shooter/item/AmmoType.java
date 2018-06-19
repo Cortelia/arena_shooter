@@ -8,7 +8,7 @@ public class AmmoType {
     // internal id defined in Json Data file
     private String id;
     // tool tip description on GUI
-    private String desc;
+    private String description;
     // no idea, optional
     private String[] tags;
     // flat damage bonus
@@ -17,11 +17,11 @@ public class AmmoType {
     private double damageModifier;
 
     // Constructor, generally call during game loading while instantiating all object instances
-    public AmmoType(String name, String id, String desc, String[] tags, double damage, double damageModifier) {
+    public AmmoType(String name, String id, String description, String[] tags, double damage, double damageModifier) {
 		super();
 		this.name = name;
 		this.id = id;
-		this.desc = desc;
+		this.description = description;
 		this.tags = tags;
 		this.damage = damage;
 		this.damageModifier = damageModifier;
@@ -61,8 +61,8 @@ public class AmmoType {
     }
 
     // desc getter
-    public String getDesc() {
-    	return this.desc;
+    public String getDescription() {
+    	return this.description;
     }
 
     // id getter
