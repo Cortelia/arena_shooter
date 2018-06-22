@@ -2,16 +2,21 @@ package fr.cortelia.arena_shooter;
 
 public abstract class GameObject {
 	
-	private GameObjectManager gom;
+	// UNCHECKED peut être non nécessaire
+	private GameObjectManager manager;
 	
 	public abstract void stateUpdate() ;
 	
-	public void subscribe(GameObjectManager gom) {
-		gom.add(this);
-		this.gom = gom;
+	public GameObject subscribe(GameObjectManager gom) {
+		if (manager != null) {
+			manager.remove(this);
+		}
+		this.manager = gom;
+		return this;
 	}
 	
-	public void dispose () {
-		gom.remove(this);
+	public GameObject dispose () {
+		manager = null;
+		return this;
 	}
 }

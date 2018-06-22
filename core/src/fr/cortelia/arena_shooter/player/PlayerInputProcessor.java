@@ -11,7 +11,6 @@ public class PlayerInputProcessor implements InputProcessor{
 	public boolean isMovingRight = false;
 	
 	public boolean isFiring = false;
-	public boolean hasFired = false;
 
 	@Override
 	public boolean keyDown(int keycode) {
@@ -66,46 +65,32 @@ public class PlayerInputProcessor implements InputProcessor{
 
 	@Override
 	public boolean keyTyped(char character) {
-		// TODO Auto-generated method stub
-		System.out.println("Controller keyTyped : "+character);
-		
-		
-		
+		// should be not used
 		return false;
 	}
 
 	@Override
 	public boolean touchDown(int screenX, int screenY, int pointer, int button) {
-		// TODO Auto-generated method stub
-		System.out.println("Controller touchDown : "+pointer + " = "+button+" ( "+screenX+","+screenY+" )");
 		return false;
 	}
 
 	@Override
 	public boolean touchUp(int screenX, int screenY, int pointer, int button) {
-		// TODO Auto-generated method stub
-		System.out.println("Controller touchUp : "+pointer + " = "+button+" ( "+screenX+","+screenY+" )");
 		return false;
 	}
 
 	@Override
 	public boolean touchDragged(int screenX, int screenY, int pointer) {
-		// TODO Auto-generated method stub
-		System.out.println("Controller keyUp : "+pointer + " ( "+screenX+","+screenY+" )");
 		return false;
 	}
 
 	@Override
 	public boolean mouseMoved(int screenX, int screenY) {
-		// TODO Auto-generated method stub
-		//System.out.println("Controller mouseMoved : ( "+screenX+","+screenY+" )");
 		return false;
 	}
 
 	@Override
 	public boolean scrolled(int amount) {
-		// TODO Auto-generated method stub
-		System.out.println("Controller scrolled : "+amount);
 		return false;
 	}
 

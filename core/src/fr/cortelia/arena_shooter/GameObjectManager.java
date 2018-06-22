@@ -11,32 +11,21 @@ public class GameObjectManager {
 	private List<GameObject> gameObjects = new LinkedList<GameObject>();
 
 	public void updateAll() {
-		gameObjects.forEach(new Consumer<GameObject>() {
-
-			@Override
-			public void accept(GameObject t) {
-				t.stateUpdate();
-			}
-			
-		});
+		gameObjects.forEach( (go) ->  {go.stateUpdate();}) ;
 	}
 	
 	public void renderAll() {
-		gameObjects.forEach(new Consumer<GameObject>() {
-
-			@Override
-			public void accept(GameObject t) {
-				if (t instanceof IRenderable) {
-					((IRenderable) t).render();				
+		gameObjects.forEach( (go) -> {
+				if (go instanceof IRenderable) {
+					((IRenderable) go).render();				
 				}
-			}
-			
 		});
 	}
 	
 	
-	public void subcribe (GameObject go) {
-		go.subscribe(this);
+	public GameObjectManager subcribe (GameObject go) {
+		this.add(go.subscribe(this));
+		return this;
 	}
 	
 	public void add (GameObject go) {
@@ -47,8 +36,15 @@ public class GameObjectManager {
 		this.gameObjects.remove(go);
 	}
 	
-	public void dispose(GameObject go) {
-		go.dispose();
+	public GameObjectManager dispose(GameObject go) {
+		this.remove(go.dispose());
+		return this;
+	}
+	
+	public void disposeAll() {
+		gameObjects.forEach((go) -> {
+			this.dispose(go);
+		});
 	}
 	
 }

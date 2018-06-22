@@ -19,9 +19,6 @@ public class ArenaShooter extends ApplicationAdapter {
 	Texture img;
 	GameObjectManager gom;
 	
-	ShapeRenderer shapeRenderer;
-
-	
 	@Override
 	public void create () {
 		batch = new SpriteBatch();
@@ -32,10 +29,8 @@ public class ArenaShooter extends ApplicationAdapter {
 		
 		this.gom = new GameObjectManager();
 		
-		Player p = new Player(controller);
-		p.subscribe(this.gom);
-
-		shapeRenderer = new ShapeRenderer();
+		gom.subcribe(new Player(controller));
+		
 	}
 
 	@Override
@@ -46,11 +41,9 @@ public class ArenaShooter extends ApplicationAdapter {
 		
 		this.gom.renderAll();
 		
-		//batch.begin();
-		//batch.draw(img, 0, 0);
-		//batch.end();
-		
-		
+		batch.begin();
+		batch.draw(img, 0, 0);
+		batch.end();
 		
 		
 	}
