@@ -1,9 +1,13 @@
 package fr.cortelia.arena_shooter.player;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.InputProcessor;
+import com.badlogic.gdx.math.Vector2;
 
 public class PlayerInputProcessor implements InputProcessor{
+	
+	public Vector2 mousePosition =  new Vector2();
 	
 	public boolean isMovingFoward = false;
 	public boolean isMovingLeft = false;
@@ -11,16 +15,17 @@ public class PlayerInputProcessor implements InputProcessor{
 	public boolean isMovingRight = false;
 	
 	public boolean isFiring = false;
+	
 
 	@Override
 	public boolean keyDown(int keycode) {
 		
 		switch (keycode) {
 		case Keys.UP:
-			isMovingFoward = true;
+			isMovingBackward= true;
 			break;
 		case Keys.DOWN:
-			isMovingBackward = true;
+			isMovingFoward= true;
 			break;
 		case Keys.LEFT:
 			isMovingLeft = true;
@@ -44,10 +49,10 @@ public class PlayerInputProcessor implements InputProcessor{
 		
 		switch (keycode) {
 		case Keys.UP:
-			isMovingFoward = false;
+			isMovingBackward = false;
 			break;
 		case Keys.DOWN:
-			isMovingBackward = false;
+			isMovingFoward = false;
 			break;
 		case Keys.LEFT:
 			isMovingLeft = false;
@@ -86,6 +91,7 @@ public class PlayerInputProcessor implements InputProcessor{
 
 	@Override
 	public boolean mouseMoved(int screenX, int screenY) {
+		this.mousePosition.set(screenX, screenY);
 		return false;
 	}
 
