@@ -4,22 +4,28 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.function.Consumer;
 
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.Action;
 
 public class GameObjectManager {
 	
 	private List<GameObject> gameObjects = new LinkedList<GameObject>();
+	
+	private SpriteBatch batch = new SpriteBatch();
 
 	public void updateAll() {
 		gameObjects.forEach( (go) ->  {go.stateUpdate();}) ;
 	}
 	
 	public void renderAll() {
+		batch.begin();
+		batch.setProjectionMatrix(ArenaShooter.cam.combined);
 		gameObjects.forEach( (go) -> {
 				if (go instanceof IRenderable) {
-					((IRenderable) go).render();				
+					((IRenderable) go).render(batch);				
 				}
 		});
+		batch.end();
 	}
 	
 	

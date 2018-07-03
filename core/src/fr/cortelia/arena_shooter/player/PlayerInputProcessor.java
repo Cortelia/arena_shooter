@@ -1,6 +1,5 @@
 package fr.cortelia.arena_shooter.player;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.math.Vector2;
@@ -76,6 +75,7 @@ public class PlayerInputProcessor implements InputProcessor{
 
 	@Override
 	public boolean touchDown(int screenX, int screenY, int pointer, int button) {
+		System.err.println("("+screenX+","+screenY+")");
 		return false;
 	}
 
