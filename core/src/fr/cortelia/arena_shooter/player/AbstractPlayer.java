@@ -8,6 +8,7 @@ import com.badlogic.gdx.math.Vector2;
 import fr.cortelia.arena_shooter.ArenaShooter;
 import fr.cortelia.arena_shooter.GameObject;
 import fr.cortelia.arena_shooter.IRenderable;
+import fr.cortelia.arena_shooter.item.Weapon;
 
 
 public abstract class AbstractPlayer extends GameObject implements IRenderable {
@@ -25,8 +26,9 @@ public abstract class AbstractPlayer extends GameObject implements IRenderable {
 	
 	protected int hitpoints;
 	protected int armor;
-
 	protected float MovementSpeed = 0.5f;
+	
+	protected Weapon equipedWeapon;
 	
 	/////////////////////
 	// Getter / Setter
@@ -196,6 +198,15 @@ public abstract class AbstractPlayer extends GameObject implements IRenderable {
 		return this.armor;
 	}
 	
+	public Weapon getEquipedWeapon() {
+		return this.equipedWeapon;
+	}
+	
+	public void setEquipedWeapon(Weapon weapon) {
+		this.equipedWeapon = weapon;
+		weapon.setOwner(this);
+	}
+	
 	// Constructors
 	
 	protected AbstractPlayer(String name, Texture img) {
@@ -218,6 +229,13 @@ public abstract class AbstractPlayer extends GameObject implements IRenderable {
 	/////////////////////
 	// Default Methods
 	/////////////////////
+	
+	/**
+	 * any action from the player should be done here.
+	 */
+	protected void shoot() {
+		this.equipedWeapon.shoot(this.angle);
+	}
 	
 	/////////////////////
 	// Override Methods
@@ -255,11 +273,6 @@ public abstract class AbstractPlayer extends GameObject implements IRenderable {
 	 * any update about the orientation of the Player should be done here
 	 */
 	protected abstract void rotate();
-	
-	/**
-	 * any action from the player should be done here.
-	 */
-	protected abstract void shoot() ;
 	
 	/**
 	 * define the logic when the player receive damage.
