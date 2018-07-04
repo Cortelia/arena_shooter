@@ -1,7 +1,9 @@
 package fr.cortelia.arena_shooter;
 
-public interface IRenderable {
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
-	public void render() ;
+public interface IRenderable {
+	
+	public void render(SpriteBatch batch) ;
 	
 }

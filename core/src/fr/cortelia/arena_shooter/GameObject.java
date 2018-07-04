@@ -2,7 +2,7 @@ package fr.cortelia.arena_shooter;
 
 public abstract class GameObject {
 	
-	// UNCHECKED peut être non nécessaire
+	// UNCHECKED peut etre non nÃ©cessaire
 	private GameObjectManager manager;
 	
 	public abstract void stateUpdate() ;
