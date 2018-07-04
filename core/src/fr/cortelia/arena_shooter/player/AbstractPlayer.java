@@ -234,7 +234,7 @@ public abstract class AbstractPlayer extends GameObject implements IRenderable {
 	 * any action from the player should be done here.
 	 */
 	protected void shoot() {
-		this.equipedWeapon.shoot(this.angle);
+		this.equipedWeapon.attack(this.angle);
 	}
 	
 	/////////////////////

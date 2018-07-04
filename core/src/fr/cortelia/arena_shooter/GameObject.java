@@ -7,9 +7,13 @@ public abstract class GameObject {
 	
 	public abstract void stateUpdate() ;
 	
+	public GameObjectManager getGameOjectManager() {
+		return this.manager;
+	}
+	
 	public GameObject subscribe(GameObjectManager gom) {
 		if (manager != null) {
-			manager.remove(this);
+			manager.unsubcribe(this);
 		}
 		this.manager = gom;
 		return this;

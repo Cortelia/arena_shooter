@@ -61,7 +61,7 @@ public class Weapon {
 	// METHODS
 	/////////////////////
 	
-	public void shoot(float angle) {
+	public void attack(float angle) {
 		System.out.println("shooting with "+this.name+" aiming at "+angle+" degrees");
 	}
 
